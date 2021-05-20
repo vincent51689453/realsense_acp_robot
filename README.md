@@ -8,13 +8,13 @@ Five testing points are used to check the resultant transformation. They were ca
 
 The visualization of resultant transformation was shown in the following pictures and videos. 
 
-![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-devel/github_image/rviz01.png)
+![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/hand-eye-coordination/rviz01.png)
 
-![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-devel/github_image/rviz02.png)
+![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/hand-eye-coordination/rviz02.png)
 
-![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-devel/github_image/rviz03.png)
+![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/hand-eye-coordination/rviz03.png)
 
-![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-devel/github_image/rviz_image_world_tf.gif)
+![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/hand-eye-coordination/rviz_image_world_tf.gif)
 
 
 ## Acupuncture Localization
