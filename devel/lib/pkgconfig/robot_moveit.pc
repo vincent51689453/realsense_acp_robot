@@ -1,0 +1,8 @@
+prefix=/home/vincent/vincent-dev/realsense_acp_robot/devel
+
+Name: robot_moveit
+Description: Description of robot_moveit
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -8,6 +8,7 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/vincent/vincent-dev/realsense_acp_robot/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/vincent/vincent-dev/realsense_acp_robot/devel/lib:$LD_LIBRARY_PATH"
 export PWD='/home/vincent/vincent-dev/realsense_acp_robot/build'
 export ROSLISP_PACKAGE_DIRECTORIES='/home/vincent/vincent-dev/realsense_acp_robot/devel/share/common-lisp'
 export ROS_PACKAGE_PATH="/home/vincent/vincent-dev/realsense_acp_robot/src:$ROS_PACKAGE_PATH"

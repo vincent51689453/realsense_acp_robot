@@ -1,0 +1,8 @@
+prefix=/home/vincent/vincent-dev/realsense_acp_robot/devel
+
+Name: industrial_msgs
+Description: Description of industrial_msgs
+Version: 0.7.1
+Cflags: -I/home/vincent/vincent-dev/realsense_acp_robot/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime std_msgs trajectory_msgs

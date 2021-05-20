@@ -1,0 +1,8 @@
+prefix=/home/vincent/vincent-dev/realsense_acp_robot/install
+
+Name: industrial_deprecated
+Description: Description of industrial_deprecated
+Version: 0.7.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

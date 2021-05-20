@@ -1,0 +1,8 @@
+prefix=/home/vincent/vincent-dev/realsense_acp_robot/devel
+
+Name: simple_message
+Description: Description of simple_message
+Version: 0.7.1
+Cflags: -I/home/vincent/vincent-dev/realsense_acp_robot/src/industrial_core/simple_message/include
+Libs: -L${prefix}/lib -lsimple_message_dummy
+Requires: roscpp industrial_msgs

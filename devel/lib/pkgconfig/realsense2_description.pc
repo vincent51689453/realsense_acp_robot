@@ -1,0 +1,8 @@
+prefix=/home/vincent/vincent-dev/realsense_acp_robot/devel
+
+Name: realsense2_description
+Description: Description of realsense2_description
+Version: 2.2.23
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

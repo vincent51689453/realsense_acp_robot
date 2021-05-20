@@ -1,0 +1,8 @@
+prefix=/home/vincent/vincent-dev/realsense_acp_robot/install
+
+Name: industrial_utils
+Description: Description of industrial_utils
+Version: 0.7.1
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lindustrial_utils
+Requires: roscpp urdf
