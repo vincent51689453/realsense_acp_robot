@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Needle_3">
+
+  <!-- neddle ur joint -->
+  <joint name="needle_joint" type="fixed">
+    <origin rpy="-1.57 0 3.14" xyz="0 0 0.148"/>
+    <parent link="tool0"/>
+    <child link="needle_link"/>
+  </joint>
+
+  <link
+    name="needle_link">
+    <inertial>
+      <origin
+        xyz="-4.44255098969494E-11 0.0047377668579205 -0.124064186026868"
+        rpy="0 0 0" />
+      <mass
+        value="0.0355583406853843" />
+      <inertia
+        ixx="1.79486320809341E-05"
+        ixy="-2.40464878528622E-14"
+        ixz="6.80855215357588E-15"
+        iyy="8.90077723405512E-06"
+        iyz="-7.24541712953229E-15"
+        izz="1.57359312588625E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ur_description/meshes/needle/needle.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ur_description/meshes/needle/needle.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

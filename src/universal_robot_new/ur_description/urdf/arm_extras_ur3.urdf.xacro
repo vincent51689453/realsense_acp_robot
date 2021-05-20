@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- xacro for extras components mounted on the manipulator -->
+
+<robot name="arm_extras" xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:macro name="arm_extras" params="prefix joint_limited">
+
+    <!-- gripper extender link -->
+    <joint name="gripper_extender_joint" type="fixed">
+      <origin rpy="0 -1.57 0" xyz="0 0 0"/>
+      <parent link="${prefix}tool0"/>
+      <child link="${prefix}gripper_extender_link"/>
+    </joint>
+    <link name="${prefix}gripper_extender_link">
+      <visual>
+        <geometry>
+          <cylinder length="0.218" radius="0.014"/>
+        </geometry>
+        <origin rpy="0 ${M_PI/2} 0" xyz="0.104 0.0 0.0"/>
+        <material name="White">
+          <color rgba="${150/255} ${150/255} ${150/255} 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder length="0.218" radius="0.014"/>
+        </geometry>
+        <origin rpy="0 ${M_PI/2} 0" xyz="0.104 0.0 0.00"/>
+      </collision>
+      <inertial>
+        <mass value="0.6"/>
+        <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+      </inertial>
+    </link>
+
+
+  </xacro:macro>
+</robot>
