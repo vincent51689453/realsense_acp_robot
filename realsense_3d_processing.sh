@@ -1,1 +1,1 @@
-rosrun realsense_3d_handler rs_core_3d.py
+rosrun realsense_handler_3d rs_core_3d.py
