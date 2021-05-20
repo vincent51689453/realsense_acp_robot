@@ -36,6 +36,8 @@ Please put the checkpoint to the following path:
 
 /home/vincent/.cache/torch/checkpoints/maskrcnn_resnet50_fpn_coco-bf2d0c1e.pth
 
+![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/image_segmentation/mask_rcnn_01.png)
+
 ## Acupuncture Localization
 (TO-DO)
 
