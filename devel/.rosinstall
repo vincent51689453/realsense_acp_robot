@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/vincent/vincent-dev/realsense_acp_robot/devel/setup.sh

@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/vincent/vincent-dev/realsense_acp_robot/devel -DCMAKE_INSTALL_PREFIX=/home/vincent/vincent-dev/realsense_acp_robot/install -G Unix Makefiles
