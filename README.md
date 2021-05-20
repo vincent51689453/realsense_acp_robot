@@ -16,7 +16,33 @@ The visualization of resultant transformation was shown in the following picture
 
 ![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/hand-eye-coordination/rviz_image_world_tf.gif)
 
+## Mask RCNN Implementation
+This realtime image segmentation using Mask RCNN was based on *python2 using Pytorch==1.4.0 and torchvision==0.5.0.*. Therefore,please follow the instructions below to setup the environment. **Make Sure your pip version is pointed to python2.7**
+
+
+```
+pip --version
+pip install torch==1.4.0 torchvision==0.5.0
+pip install future
+sudo apt-get install python3-matplotlib
+```
+
+Please download the checkpoint trained with COCO dataset using the following path:
+
+https://download.pytorch.org/models/maskrcnn_resnet50_fpn_coco-bf2d0c1e.pth
+
+
+Please put the checkpoint to the following path:
+
+/home/vincent/.cache/torch/checkpoints/maskrcnn_resnet50_fpn_coco-bf2d0c1e.pth
 
 ## Acupuncture Localization
 (TO-DO)
+
+## System StartUp Procedures
+1) Connect to UR3    : ./start_robot_bringup.sh
+2) Start Planning    : ./start_robot_planning.sh
+3) Drive UR3 to the standby position: ./robot_standby_pose.sh
+3) Start Realsense   : ./realsense_publish_start.sh
+3) Start Segmentation: ./realsense_segmentation.sh
 

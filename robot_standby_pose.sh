@@ -1,0 +1,1 @@
+rosrun ur3_python_controller endeffector_controller.py

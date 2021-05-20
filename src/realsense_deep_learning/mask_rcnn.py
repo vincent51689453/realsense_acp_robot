@@ -5,6 +5,8 @@
 """
 # pip install torch==1.4.0 torchvision==0.5.0
 # pip install future
+# sudo apt-get install python3-matplotlib
+# Checkpoint path: /home/vincent/.cache/torch/checkpoints/maskrcnn_resnet50_fpn_coco-bf2d0c1e.pth
 
 # System Packages
 import torchvision
