@@ -493,6 +493,24 @@ industrial_core/industrial_deprecated/preinstall:
 .PHONY : industrial_core/industrial_deprecated/preinstall
 
 #=============================================================================
+# Directory level rules for directory realsense_deep_learning
+
+# Convenience name for "all" pass in the directory.
+realsense_deep_learning/all:
+
+.PHONY : realsense_deep_learning/all
+
+# Convenience name for "clean" pass in the directory.
+realsense_deep_learning/clean:
+
+.PHONY : realsense_deep_learning/clean
+
+# Convenience name for "preinstall" pass in the directory.
+realsense_deep_learning/preinstall:
+
+.PHONY : realsense_deep_learning/preinstall
+
+#=============================================================================
 # Directory level rules for directory realsense_handler_3d
 
 # Convenience name for "all" pass in the directory.
@@ -509,24 +527,6 @@ realsense_handler_3d/clean:
 realsense_handler_3d/preinstall:
 
 .PHONY : realsense_handler_3d/preinstall
-
-#=============================================================================
-# Directory level rules for directory realsense_image_writer
-
-# Convenience name for "all" pass in the directory.
-realsense_image_writer/all:
-
-.PHONY : realsense_image_writer/all
-
-# Convenience name for "clean" pass in the directory.
-realsense_image_writer/clean:
-
-.PHONY : realsense_image_writer/clean
-
-# Convenience name for "preinstall" pass in the directory.
-realsense_image_writer/preinstall:
-
-.PHONY : realsense_image_writer/preinstall
 
 #=============================================================================
 # Directory level rules for directory realsense2_description

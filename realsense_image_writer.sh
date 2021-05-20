@@ -1,1 +1,0 @@
-rosrun realsense_image_writer realsense_converter.py
