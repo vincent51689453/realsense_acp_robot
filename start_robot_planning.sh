@@ -1,0 +1,1 @@
+roslaunch robot_moveit robot_planning.launch
