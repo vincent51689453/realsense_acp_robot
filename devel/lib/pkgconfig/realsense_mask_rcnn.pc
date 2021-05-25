@@ -1,0 +1,8 @@
+prefix=/home/vincent/vincent-dev/realsense_acp_robot/devel
+
+Name: realsense_mask_rcnn
+Description: Description of realsense_mask_rcnn
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

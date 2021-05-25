@@ -529,6 +529,42 @@ realsense_handler_3d/preinstall:
 .PHONY : realsense_handler_3d/preinstall
 
 #=============================================================================
+# Directory level rules for directory realsense_mask_rcnn
+
+# Convenience name for "all" pass in the directory.
+realsense_mask_rcnn/all:
+
+.PHONY : realsense_mask_rcnn/all
+
+# Convenience name for "clean" pass in the directory.
+realsense_mask_rcnn/clean:
+
+.PHONY : realsense_mask_rcnn/clean
+
+# Convenience name for "preinstall" pass in the directory.
+realsense_mask_rcnn/preinstall:
+
+.PHONY : realsense_mask_rcnn/preinstall
+
+#=============================================================================
+# Directory level rules for directory realsense_reg_cnn
+
+# Convenience name for "all" pass in the directory.
+realsense_reg_cnn/all:
+
+.PHONY : realsense_reg_cnn/all
+
+# Convenience name for "clean" pass in the directory.
+realsense_reg_cnn/clean:
+
+.PHONY : realsense_reg_cnn/clean
+
+# Convenience name for "preinstall" pass in the directory.
+realsense_reg_cnn/preinstall:
+
+.PHONY : realsense_reg_cnn/preinstall
+
+#=============================================================================
 # Directory level rules for directory realsense2_description
 
 # Convenience name for "all" pass in the directory.

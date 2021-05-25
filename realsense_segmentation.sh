@@ -1,1 +1,0 @@
-rosrun realsense_deep_learning deep_learning_core.py
