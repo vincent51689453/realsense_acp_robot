@@ -7,7 +7,6 @@
 subdirs("gtest")
 subdirs("industrial_core/industrial_core")
 subdirs("industrial_core/industrial_deprecated")
-subdirs("realsense_deep_learning")
 subdirs("realsense_handler_3d")
 subdirs("realsense_mask_rcnn")
 subdirs("realsense_reg_cnn")
