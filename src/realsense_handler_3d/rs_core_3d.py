@@ -106,6 +106,7 @@ def main():
 if __name__ == '__main__':
     # Delay for tf capture
     time.sleep(5)
+    print("Start")
     rospy.init_node(hc.node_name)
     main()
     hc.marker_transform_ok = False

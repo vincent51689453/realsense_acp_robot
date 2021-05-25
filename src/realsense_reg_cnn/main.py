@@ -11,6 +11,8 @@ import cv2
 import numpy as np
 import pyrealsense2 as rs2
 import time
+from mpl_toolkits import mplot3d
+import matplotlib.pyplot as plt
 
 #ROS Packages
 import rospy
@@ -18,7 +20,6 @@ from sensor_msgs.msg import Image
 from sensor_msgs.msg import CameraInfo
 from std_msgs.msg import Float32MultiArray
 from cv_bridge import CvBridge, CvBridgeError
-from visualization_msgs.msg import Marker
 
 #Customize packages
 import handler_config as hc
@@ -78,11 +79,14 @@ def main():
     # Subscribe camera info [depth_rgb aligned]
     rospy.Subscriber(hc.camera_info_depth_aligned_color_topic,CameraInfo,callback=camera_info_callback)
 
+
     # 2D/3D Image processing
+
     while True:
         if((hc.depth_image is not None)and(hc.color_image is not None)):
             # Processing Core
-            color_output, depth_output = regCNN.core(hc.color_image,hc.depth_image,hc.depth_array)
+            color_output, depth_output = regCNN.core(hc.color_image,hc.depth_image)
+            
             # Visulaiztion in RVIZ
             image_pub_color.publish(bridge.cv2_to_imgmsg(color_output, "bgr8"))
             image_pub_depth.publish(bridge.cv2_to_imgmsg(depth_output, "bgr8"))
@@ -91,14 +95,11 @@ def main():
             # cv2.imshow("Realsense [Depth]",depth_output)
             # if cv2.waitKey(1) & 0xFF == ord('q'):
             #    break
-                
+
     #cv2.waitKey(0)
     #cv2.destroyAllWindows()
 
 
 if __name__ == '__main__':
-    # Delay for tf capture
-    time.sleep(5)
     rospy.init_node(hc.node_name)
     main()
-    hc.marker_transform_ok = False
