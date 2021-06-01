@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 @Author : Chan Tai Wing
-@Date   : 12 May 2021
+@Date   : 01 Jun 2021
 @About  : Publish/Subscribe of realsense images
 """
 #System Packages
@@ -23,7 +23,7 @@ from cv_bridge import CvBridge, CvBridgeError
 
 #Customize packages
 import handler_config as hc
-import regCNN
+import segmentation 
 
 
 def depth_callback(ros_msg):
@@ -84,8 +84,11 @@ def main():
 
     while True:
         if((hc.depth_image is not None)and(hc.color_image is not None)):
-            # Processing Core
-            color_output, depth_output = regCNN.core(hc.color_image,hc.depth_image)
+            # Unsupervised Segmentation (RGB):
+            color_output = segmentation.core(hc.color_image,hc.depth_image)
+
+            # Keep depth image unchanged
+            depth_output = hc.depth_image
             
             # Visulaiztion in RVIZ
             image_pub_color.publish(bridge.cv2_to_imgmsg(color_output, "bgr8"))

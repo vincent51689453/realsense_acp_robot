@@ -16,7 +16,7 @@ The visualization of resultant transformation was shown in the following picture
 
 ![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/hand-eye-coordination/rviz_image_world_tf.gif)
 
-## Mask RCNN Implementation
+## Mask RCNN Implementation (deprecated)
 This realtime image segmentation using Mask RCNN was based on *python2 using Pytorch==1.4.0 and torchvision==0.5.0.*. Therefore,please follow the instructions below to setup the environment. **Make Sure your pip version is pointed to python2.7**
 
 
@@ -38,8 +38,14 @@ Please put the checkpoint to the following path:
 
 ![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/image_segmentation/mask_rcnn_01.png)
 
+## Unsupervised image segmentation
+This segmentaiton does not required to prepare a large amount of dataset. It can learn to cluster pixels in an image with unsupervised deep neural network. Thus, it is much more efficient than mask-rcnn. In order to use this approach, scikit-image is required and you can install using the following command. Noted that this system is using python2
+```
+pip install scikit-image
+```
+
 ## Acupuncture Localization
-(TO-DO)
+
 
 ## System StartUp Procedures
 1) Connect to UR3    : ./start_robot_bringup.sh

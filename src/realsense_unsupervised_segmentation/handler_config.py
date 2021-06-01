@@ -1,12 +1,11 @@
 """
 @Author : Chan Tai Wing
-@Date   : 12 May 2021
+@Date   : 01 Jun 2021
 @About  : System parameters
 """
 # Resolution
 width = 1280
 height = 720
-
 
 # ROS Topic
 node_name = 'realsense_regCNN'
