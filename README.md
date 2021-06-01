@@ -45,7 +45,22 @@ pip install scikit-image
 ```
 
 ### Training
-After running realsense_unsupervised_segmentation/main.py, you need to press \<X\> or \<x\> to capture a picture. That picture will be used to train the network to perform image segmentation.
+If you plan to train the newtork, you must enable line 111 to start the training. After you run realsnense_unsupervised_segmentation/main.py, you need to press \<X\> or \<x\> to capture a picture. That picture will be used to train the network to perform image segmentation.
+
+Different parameters can be set to get the most optimal output.
+
+1. num_neurons_basic = 100 (default) -> number of neurons in the hidden layers
+2. num_layers_basic = 2 (default) -> number of hidden layers
+3. square_kernel_size = 3 (default) -> kernel size
+4. stride_step = 1 (default) -> stride 
+5. padding_approach = 1 (default) -> padding approach
+6. compactness = 100 (default) -> Balances color proximity and space proximity. Higher means consider space.Vice versa, lower meanus consider color
+7. segments = 10000 (default) -> The approximate number of labels in the segmented output image.
+8. max_epoch = 10000 (default) -> Maximum epohces
+9. min_num_labels = 2 (default) -> Categories you need
+10. learning_rate = 0.1 (default) -> Learning rate
+
+![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/image_segmentation/unsupervised_segmentation.png)
 
 ## Acupuncture Localization
 
