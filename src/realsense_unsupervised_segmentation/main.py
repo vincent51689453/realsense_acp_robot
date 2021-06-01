@@ -12,6 +12,7 @@ import numpy as np
 import pyrealsense2 as rs2
 import time
 import torch
+from pynput import keyboard
 
 #ROS Packages
 import rospy
@@ -24,17 +25,24 @@ from cv_bridge import CvBridge, CvBridgeError
 import handler_config as hc
 import segmentation 
 
+
 # System Relase based on keyboard input
 def on_press (key):
-    global adjust,power
     try:
         if((key.char=='q')or(key.char=='Q')):
             hc.system_release = True
         if((key.char=='x')or(key.char=='X')):
             hc.capture_image = True
+            print("Start capture...")
    
     except AttributeError:
         print('special key {0} pressed'.format(key))
+
+def on_release(key):
+    #print('{0} released'.format(key))
+    if key == keyboard.Key.esc:
+        # Stop listener
+        return False
 
 def depth_callback(ros_msg):
     # Depth image callback
@@ -76,6 +84,7 @@ def camera_info_callback(cameraInfo):
 
 
 def main():
+    global training
 
     # Image Publisher for color and depth images
     image_pub_color = rospy.Publisher(hc.output_rgb_image_topic,Image,queue_size=10)
@@ -98,21 +107,21 @@ def main():
     # 2D/3D Image processing
     while not(hc.system_release):
         if((hc.depth_image is not None)and(hc.color_image is not None)):
-            # Unsupervised Segmentation (RGB):
-            color_output = segmentation.core(hc.color_image,hc.depth_image)
-
-            # Keep depth image unchanged
-            depth_output = hc.depth_image
+            # Network training
+            color_output = segmentation.single_image_training(hc.color_image)
             
+            # Unsupervised Segmentation (RGB):
+            # color_output = segmentation.core(hc.color_image,hc.depth_image)
+           
             # Visulaiztion in RVIZ
             image_pub_color.publish(bridge.cv2_to_imgmsg(color_output, "bgr8"))
-            image_pub_depth.publish(bridge.cv2_to_imgmsg(depth_output, "bgr8"))
+            #image_pub_depth.publish(bridge.cv2_to_imgmsg(depth_output, "bgr8"))
             # Visualization in new window
             # cv2.imshow("Realsense [RGB]",color_output)
             # cv2.imshow("Realsense [Depth]",depth_output)
             # if cv2.waitKey(1) & 0xFF == ord('q'):
             #    break
-
+   
     # Release GPU memory
     torch.cuda.empty_cache()
     print("GPU Memroy is released")

@@ -26,6 +26,7 @@ intrinsic = None
 system_release = False
 capture_image = False
 capture_index = 0
+training_mode = True
 
 # Network
 num_neurons_basic = 100
@@ -34,4 +35,9 @@ square_kernel_size = 3
 stride_step = 1
 padding_approach = 1
 
+compactness = 100
+segments = 10000
+max_epoch = 1000
+min_num_labels = 3
 
+learning_rate = 0.1

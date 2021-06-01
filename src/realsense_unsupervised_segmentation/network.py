@@ -1,6 +1,14 @@
-class unsupCNN(nn.Moudle):
+#System Packages
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+#Customize packages
+import handler_config as hc
+
+class unsupCNN(nn.Module):
     def __init__(self,input_dim):
-        super(unsupCNN,self).__init()
+        super(unsupCNN,self).__init__()
         #Input layer
         self.conv1 = nn.Conv2d(input_dim, hc.num_neurons_basic, kernel_size=hc.square_kernel_size, \
             stride=hc.stride_step, padding=hc.padding_approach)
