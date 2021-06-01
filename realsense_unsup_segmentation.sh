@@ -1,0 +1,1 @@
+rosrun realsense_unsupervised_segmentation main.py
