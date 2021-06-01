@@ -4,8 +4,7 @@ import cv2
 import numpy as np
 from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
-
-    
+   
 
 def core (rgb_image,depth_image):
     #Apply color map to depth image

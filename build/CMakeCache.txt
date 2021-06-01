@@ -586,6 +586,12 @@ realsense_reg_cnn_BINARY_DIR:STATIC=/home/vincent/vincent-dev/realsense_acp_robo
 realsense_reg_cnn_SOURCE_DIR:STATIC=/home/vincent/vincent-dev/realsense_acp_robot/src/realsense_reg_cnn
 
 //Value Computed by CMake
+realsense_unsupervised_segmentation_BINARY_DIR:STATIC=/home/vincent/vincent-dev/realsense_acp_robot/build/realsense_unsupervised_segmentation
+
+//Value Computed by CMake
+realsense_unsupervised_segmentation_SOURCE_DIR:STATIC=/home/vincent/vincent-dev/realsense_acp_robot/src/realsense_unsupervised_segmentation
+
+//Value Computed by CMake
 robot_moveit_BINARY_DIR:STATIC=/home/vincent/vincent-dev/realsense_acp_robot/build/robot_moveit
 
 //Value Computed by CMake
