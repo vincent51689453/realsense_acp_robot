@@ -37,6 +37,10 @@ def single_image_training(rgb_image):
     while not(image_ready):
         image_ready,file_name = freeze_image(rgb_image)
 
+    # Start training
+    
+
+
     
     return rgb_image
 

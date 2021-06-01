@@ -27,3 +27,11 @@ system_release = False
 capture_image = False
 capture_index = 0
 
+# Network
+num_neurons_basic = 100
+num_layers_basic = 2
+square_kernel_size = 3
+stride_step = 1
+padding_approach = 1
+
+
