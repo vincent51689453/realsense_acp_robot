@@ -11,8 +11,7 @@ import cv2
 import numpy as np
 import pyrealsense2 as rs2
 import time
-from mpl_toolkits import mplot3d
-import matplotlib.pyplot as plt
+import torch
 
 #ROS Packages
 import rospy
@@ -25,6 +24,17 @@ from cv_bridge import CvBridge, CvBridgeError
 import handler_config as hc
 import segmentation 
 
+# System Relase based on keyboard input
+def on_press (key):
+    global adjust,power
+    try:
+        if((key.char=='q')or(key.char=='Q')):
+            hc.system_release = True
+        if((key.char=='x')or(key.char=='X')):
+            hc.capture_image = True
+   
+    except AttributeError:
+        print('special key {0} pressed'.format(key))
 
 def depth_callback(ros_msg):
     # Depth image callback
@@ -79,10 +89,14 @@ def main():
     # Subscribe camera info [depth_rgb aligned]
     rospy.Subscriber(hc.camera_info_depth_aligned_color_topic,CameraInfo,callback=camera_info_callback)
 
+    # Keyboard Listener
+    listener = keyboard.Listener(on_press=on_press,on_release=on_release)
+    listener.start()
+    print("Press <Q> or <q> to end the AI")
+    print("PRess <X> or <x> to capture image for training")
 
     # 2D/3D Image processing
-
-    while True:
+    while not(hc.system_release):
         if((hc.depth_image is not None)and(hc.color_image is not None)):
             # Unsupervised Segmentation (RGB):
             color_output = segmentation.core(hc.color_image,hc.depth_image)
@@ -99,8 +113,9 @@ def main():
             # if cv2.waitKey(1) & 0xFF == ord('q'):
             #    break
 
-    #cv2.waitKey(0)
-    #cv2.destroyAllWindows()
+    # Release GPU memory
+    torch.cuda.empty_cache()
+    print("GPU Memroy is released")
 
 
 if __name__ == '__main__':

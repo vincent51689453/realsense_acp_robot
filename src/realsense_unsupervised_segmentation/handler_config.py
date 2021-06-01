@@ -22,3 +22,8 @@ color_image = None
 camera_config = None
 intrinsic = None
 
+# System
+system_release = False
+capture_image = False
+capture_index = 0
+
