@@ -44,6 +44,9 @@ This segmentaiton does not required to prepare a large amount of dataset. It can
 pip install scikit-image
 ```
 
+### Training
+After running realsense_unsupervised_segmentation/main.py, you need to press \<X\> or \<x\> to capture a picture. That picture will be used to train the network to perform image segmentation.
+
 ## Acupuncture Localization
 
 
@@ -52,5 +55,5 @@ pip install scikit-image
 2) Start Planning    : ./start_robot_planning.sh
 3) Drive UR3 to the standby position: ./robot_standby_pose.sh
 3) Start Realsense   : ./realsense_publish_start.sh
-3) Start Segmentation: ./realsense_segmentation.sh
+3) Start Unsupervised Segmentation: ./realsense_unsup_segmentation.sh
 
