@@ -103,7 +103,7 @@ def main():
     listener.start()
     print("Press <Q> or <q> to end the AI")
     print("PRess <X> or <x> to capture image for training")
-
+    color_output = segmentation.single_image_training(hc.color_image)
     # 2D/3D Image processing
     while not(hc.system_release):
         if((hc.depth_image is not None)and(hc.color_image is not None)):

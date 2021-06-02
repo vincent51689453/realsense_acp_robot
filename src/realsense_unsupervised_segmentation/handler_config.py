@@ -37,7 +37,7 @@ padding_approach = 1
 
 compactness = 100
 segments = 10000
-max_epoch = 10000
+max_epoch = 100000
 min_num_labels = 2
 
 learning_rate = 0.1

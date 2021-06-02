@@ -39,7 +39,8 @@ def single_image_training(rgb_image):
         image_ready,file_name = freeze_image(rgb_image)
 
 
-    # Start training
+    # Start training    
+    #file_name = '/home/vincent/vincent-dev/realsense_acp_robot/src/realsense_unsupervised_segmentation/sample/img_0.jpg'
     img = cv2.imread(file_name)
     if(img is not None):
         print("Image is found")
