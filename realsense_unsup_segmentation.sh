@@ -1,1 +1,2 @@
-rosrun realsense_unsupervised_segmentation main.py
+# Train the network
+rosrun realsense_unsupervised_segmentation train.py
