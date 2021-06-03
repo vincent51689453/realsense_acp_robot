@@ -62,6 +62,8 @@ Different parameters can be set to get the most optimal output.
 
 ![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/image_segmentation/unsupervised_segmentation.png)
 
+![image](https://github.com/vincent51689453/realsense_acp_robot/blob/melodic-ur3-devel/git_image/image_segmentation/unsupervised_training.gif)
+
 ## Acupuncture Localization
 
 
