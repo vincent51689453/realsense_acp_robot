@@ -34,13 +34,15 @@ def freeze_image(rgb_image):
 def single_image_training(rgb_image):
     im_target_rgb = rgb_image
     image_ready = False
-    # Make sure image is captured
+    # Make sure image is captured (not applicable for image recall)
     while not(image_ready):
         image_ready,file_name = freeze_image(rgb_image)
 
-
-    # Start training    
+    # Start training 
+     
+    # Enable this line if you want to recall the image only   
     #file_name = '/home/vincent/vincent-dev/realsense_acp_robot/src/realsense_unsupervised_segmentation/sample/img_0.jpg'
+
     img = cv2.imread(file_name)
     if(img is not None):
         print("Image is found")
