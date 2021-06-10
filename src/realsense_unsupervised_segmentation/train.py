@@ -105,7 +105,7 @@ def main():
     print("PRess <X> or <x> to capture image for training")
 
     # Enable this line if you want to recall the image only
-    #color_output = segmentation.single_image_training(hc.color_image)
+    color_output = segmentation.single_image_training(hc.color_image)
     
     # 2D/3D Image processing
     while not(hc.system_release):

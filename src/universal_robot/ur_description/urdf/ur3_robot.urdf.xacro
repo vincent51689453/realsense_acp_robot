@@ -17,7 +17,7 @@
   <xacro:include filename="$(find ur_description)/urdf/arm_extras_ur3.urdf.xacro" />-->
 
   <!-- Needle Stand Horizontal -->
-  <xacro:include filename="$(find ur_description)/urdf/Needle.urdf.xacro" />
+  <xacro:include filename="$(find ur_description)/urdf/Needle_AL.urdf.xacro" />
 
   <!-- realsense D415 -->
   <xacro:include filename="$(find realsense2_description)/urdf/_d415.urdf.xacro" />
