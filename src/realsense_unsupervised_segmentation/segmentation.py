@@ -42,7 +42,7 @@ def single_image_training(rgb_image):
      
     # Enable this line if you want to recall the image only   
     file_name = '/home/vincent/vincent-dev/realsense_acp_robot/src/realsense_unsupervised_segmentation/sample/img_0.jpg'
-
+    
     img = cv2.imread(file_name)
     if(img is not None):
         print("Image is found")
@@ -102,6 +102,9 @@ def single_image_training(rgb_image):
                 training_msg = "nLabels", nLabels, "reached minLabels", min_num_labels, "."
                 print(training_msg)
                 break
+        
+        # Save network model
+        torch.save(modle,hc.model_save_path)
 
     return im_target_rgb
 

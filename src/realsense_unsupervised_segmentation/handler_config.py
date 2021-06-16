@@ -41,3 +41,5 @@ max_epoch = 10000
 min_num_labels = 2
 
 learning_rate = 0.1
+
+model_save_path = '/home/vincent/vincent-dev/realsense_acp_robot/src/realsense_unsupervised_segmentation/models/segmentation_net.pt'
