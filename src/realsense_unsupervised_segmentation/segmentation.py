@@ -29,7 +29,7 @@ def freeze_image(rgb_image):
         hc.capture_image = False
     return True,file_name
 
-# Realtime
+# Realtime Inferencing
 def inferencing(rgb_image):
     # Load model with CUDA support
     print("Start loading model...")
