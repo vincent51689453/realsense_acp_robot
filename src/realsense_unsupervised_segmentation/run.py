@@ -103,11 +103,9 @@ def main():
     # 2D/3D Image processing
     while not(hc.system_release):
         if((hc.depth_image is not None)and(hc.color_image is not None)):
-            # Network training
-            color_output = segmentation.inferencing(hc.color_image)
             
             # Unsupervised Segmentation (RGB):
-            # color_output = segmentation.core(hc.color_image,hc.depth_image)
+            color_output = segmentation.inferencing(hc.color_image)
            
             # Visulaiztion in RVIZ
             image_pub_color.publish(bridge.cv2_to_imgmsg(color_output, "bgr8"))
