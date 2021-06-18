@@ -37,9 +37,9 @@ padding_approach = 1
 
 compactness = 100
 segments = 10000
-max_epoch = 5000
+max_epoch = 500000
 min_num_labels = 4
 
 learning_rate = 0.1
 
-model_save_path = '/home/vincent/vincent-dev/realsense_acp_robot/src/realsense_unsupervised_segmentation/models/segmentation_net.pt'
+model_save_path = '/home/vincent/vincent-dev/realsense_acp_robot/src/realsense_unsupervised_segmentation/models/segmentation_net_4labels.pt'

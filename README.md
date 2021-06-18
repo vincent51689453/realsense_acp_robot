@@ -72,5 +72,7 @@ Different parameters can be set to get the most optimal output.
 2) Start Planning    : ./start_robot_planning.sh
 3) Drive UR3 to the standby position: ./robot_standby_pose.sh
 3) Start Realsense   : ./realsense_publish_start.sh
-3) Start Unsupervised Segmentation: ./realsense_unsup_segmentation.sh
+4) Start Unsupervised Segmentation: ./realsense_unsup_seg_run.sh
+
+**If you need to train the unsupervised segmentation, you need to replace step 4 by ./realsense_unsup_seg_train.sh.
 
