@@ -29,6 +29,35 @@ def freeze_image(rgb_image):
         hc.capture_image = False
     return True,file_name
 
+# Realtime
+def inferencing(rgb_image):
+    # Load model with CUDA support
+    print("Start loading model...")
+    segmentation_cnn = torch.load(hc.model_save_path)
+    if torch.cuda.is_available():
+        segmentation_cnn = segmentation_cnn.cuda()
+
+    # np array to tensor
+    transformer = transforms.ToTensor()
+    # # Expand dimensions 
+    image_tensor = transformer(rgb_image)   
+    image_tensor = torch.unsqueeze(image_tensor,0)
+    if torch.cuda.is_available():
+            image_tensor = Variable(image_tensor).cuda()
+
+    # Inference and generate output
+    output = segmentation_cnn(image_tensor)
+    output = torch.squeeze(output,0)
+
+    output = output.permute( 1, 2, 0 ).contiguous().view(-1,hc.num_neurons_basic)
+    ignore, target = torch.max(output,1)
+    im_target = target.data.cpu().numpy()
+    nLabels = len(np.unique(im_target))
+    label_colours = np.random.randint(255,size=(100,3))
+    im_target_rgb = np.array([label_colours[ c % 100 ] for c in im_target])
+    im_target_rgb = im_target_rgb.reshape(rgb_image.shape).astype(np.uint8)
+
+    return im_target_rgb
 
 # Pick a picture and start training
 def single_image_training(rgb_image):
@@ -104,7 +133,7 @@ def single_image_training(rgb_image):
                 break
         
         # Save network model
-        torch.save(modle,hc.model_save_path)
+        torch.save(model,hc.model_save_path)
 
     return im_target_rgb
 
