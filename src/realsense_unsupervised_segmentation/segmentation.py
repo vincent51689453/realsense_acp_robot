@@ -17,6 +17,9 @@ from skimage import segmentation
 import handler_config as hc
 import network
 
+network_load_done = False
+segmentation_cnn = None
+
 # Get a static image and saved
 def freeze_image(rgb_image):
     # When capture button is pressed
@@ -31,31 +34,36 @@ def freeze_image(rgb_image):
 
 # Realtime Inferencing
 def inferencing(rgb_image):
-    # Load model with CUDA support
-    print("Start loading model...")
-    segmentation_cnn = torch.load(hc.model_save_path)
-    if torch.cuda.is_available():
-        segmentation_cnn = segmentation_cnn.cuda()
+    global network_load_done,segmentation_cnn
+    im_target_rgb = rgb_image
 
-    # np array to tensor
-    transformer = transforms.ToTensor()
-    # # Expand dimensions 
-    image_tensor = transformer(rgb_image)   
-    image_tensor = torch.unsqueeze(image_tensor,0)
-    if torch.cuda.is_available():
+    # Load model with CUDA support
+    if not(network_load_done):
+        print("Start loading model...")
+        segmentation_cnn = torch.load(hc.model_save_path)
+        if torch.cuda.is_available():
+            segmentation_cnn = segmentation_cnn.cuda()
+        network_load_done = True
+    else:
+        # np array to tensor
+        transformer = transforms.ToTensor()
+        # # Expand dimensions 
+        image_tensor = transformer(rgb_image)   
+        image_tensor = torch.unsqueeze(image_tensor,0)
+        if torch.cuda.is_available():
             image_tensor = Variable(image_tensor).cuda()
 
-    # Inference and generate output
-    output = segmentation_cnn(image_tensor)
-    output = torch.squeeze(output,0)
+        # Inference and generate output
+        output = segmentation_cnn(image_tensor)
+        output = torch.squeeze(output,0)
 
-    output = output.permute( 1, 2, 0 ).contiguous().view(-1,hc.num_neurons_basic)
-    ignore, target = torch.max(output,1)
-    im_target = target.data.cpu().numpy()
-    nLabels = len(np.unique(im_target))
-    label_colours = np.random.randint(255,size=(100,3))
-    im_target_rgb = np.array([label_colours[ c % 100 ] for c in im_target])
-    im_target_rgb = im_target_rgb.reshape(rgb_image.shape).astype(np.uint8)
+        output = output.permute( 1, 2, 0 ).contiguous().view(-1,hc.num_neurons_basic)
+        ignore, target = torch.max(output,1)
+        im_target = target.data.cpu().numpy()
+        nLabels = len(np.unique(im_target))
+        label_colours = np.random.randint(255,size=(100,3))
+        im_target_rgb = np.array([label_colours[ c % 100 ] for c in im_target])
+        im_target_rgb = im_target_rgb.reshape(rgb_image.shape).astype(np.uint8)
 
     return im_target_rgb
 
