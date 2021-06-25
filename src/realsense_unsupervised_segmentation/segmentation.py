@@ -64,6 +64,7 @@ def inferencing(rgb_image):
         ignore, target = torch.max(output,1)
         im_target = target.data.cpu().numpy()
         nLabels = len(np.unique(im_target))
+        # Random colors for 100 classes
         label_colours = np.random.randint(255,size=(100,3))
         im_target_rgb = np.array([label_colours[ c % 100 ] for c in im_target])
         im_target_rgb = im_target_rgb.reshape(rgb_image.shape).astype(np.uint8)

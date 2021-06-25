@@ -73,8 +73,8 @@ def main():
     bridge = CvBridge()
 
     # Subscribe color and depth image
-    rospy.Subscriber(hc.output_rgb_image_topic,Image,callback=depth_callback)
-    rospy.Subscriber(hc.color_image_topic,Image,callback=color_callback)
+    rospy.Subscriber(hc.depth_image_topic,Image,callback=depth_callback)
+    rospy.Subscriber(hc.output_rgb_image_topic,Image,callback=color_callback)
 
     # Subscribe camera info [depth_rgb aligned]
     rospy.Subscriber(hc.camera_info_depth_aligned_color_topic,CameraInfo,callback=camera_info_callback)
@@ -99,8 +99,6 @@ def main():
 
 if __name__ == '__main__':
     # Delay for tf capture
-    time.sleep(5)
     print("Start")
     rospy.init_node(hc.node_name)
     main()
-    hc.marker_transform_ok = False
