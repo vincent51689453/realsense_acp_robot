@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/vincent/vincent-dev/realsense_acp_robot/build/gtest/cmake_install.cmake")
+  include("/home/vincent/vincent-dev/realsense_acp_robot/build/acupuncture/cmake_install.cmake")
   include("/home/vincent/vincent-dev/realsense_acp_robot/build/industrial_core/industrial_core/cmake_install.cmake")
   include("/home/vincent/vincent-dev/realsense_acp_robot/build/industrial_core/industrial_deprecated/cmake_install.cmake")
   include("/home/vincent/vincent-dev/realsense_acp_robot/build/realsense_handler_3d/cmake_install.cmake")

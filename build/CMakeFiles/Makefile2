@@ -425,6 +425,56 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory acupuncture
+
+# Convenience name for "all" pass in the directory.
+acupuncture/all:
+
+.PHONY : acupuncture/all
+
+# Convenience name for "clean" pass in the directory.
+acupuncture/clean: acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/clean
+
+.PHONY : acupuncture/clean
+
+# Convenience name for "preinstall" pass in the directory.
+acupuncture/preinstall:
+
+.PHONY : acupuncture/preinstall
+
+#=============================================================================
+# Target rules for target acupuncture/CMakeFiles/_catkin_empty_exported_target.dir
+
+# All Build rule for target.
+acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/all:
+	$(MAKE) -f acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/build.make acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/depend
+	$(MAKE) -f acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/build.make acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vincent/vincent-dev/realsense_acp_robot/build/CMakeFiles --progress-num= "Built target _catkin_empty_exported_target"
+.PHONY : acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/all
+
+# Build rule for subdir invocation for target.
+acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vincent/vincent-dev/realsense_acp_robot/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vincent/vincent-dev/realsense_acp_robot/build/CMakeFiles 0
+.PHONY : acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/rule
+
+# Convenience name for target.
+_catkin_empty_exported_target: acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/rule
+
+.PHONY : _catkin_empty_exported_target
+
+# clean rule for target.
+acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/clean:
+	$(MAKE) -f acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/build.make acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/clean
+.PHONY : acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/clean
+
+# clean rule for target.
+clean: acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Directory level rules for directory industrial_core/industrial_core
 
 # Convenience name for "all" pass in the directory.
@@ -433,7 +483,7 @@ industrial_core/industrial_core/all:
 .PHONY : industrial_core/industrial_core/all
 
 # Convenience name for "clean" pass in the directory.
-industrial_core/industrial_core/clean: industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/clean
+industrial_core/industrial_core/clean:
 
 .PHONY : industrial_core/industrial_core/clean
 
@@ -441,38 +491,6 @@ industrial_core/industrial_core/clean: industrial_core/industrial_core/CMakeFile
 industrial_core/industrial_core/preinstall:
 
 .PHONY : industrial_core/industrial_core/preinstall
-
-#=============================================================================
-# Target rules for target industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir
-
-# All Build rule for target.
-industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/all:
-	$(MAKE) -f industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/build.make industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/depend
-	$(MAKE) -f industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/build.make industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vincent/vincent-dev/realsense_acp_robot/build/CMakeFiles --progress-num= "Built target _catkin_empty_exported_target"
-.PHONY : industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/all
-
-# Build rule for subdir invocation for target.
-industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vincent/vincent-dev/realsense_acp_robot/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vincent/vincent-dev/realsense_acp_robot/build/CMakeFiles 0
-.PHONY : industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-# Convenience name for target.
-_catkin_empty_exported_target: industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-.PHONY : _catkin_empty_exported_target
-
-# clean rule for target.
-industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	$(MAKE) -f industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/build.make industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/clean
-.PHONY : industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/clean
-
-# clean rule for target.
-clean: industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/clean
-
-.PHONY : clean
 
 #=============================================================================
 # Directory level rules for directory industrial_core/industrial_deprecated
@@ -6522,7 +6540,7 @@ clean: ur_modern_driver/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
 # Target rules for target ur_modern_driver/CMakeFiles/ur_driver.dir
 
 # All Build rule for target.
-ur_modern_driver/CMakeFiles/ur_driver.dir/all: industrial_core/industrial_core/CMakeFiles/_catkin_empty_exported_target.dir/all
+ur_modern_driver/CMakeFiles/ur_driver.dir/all: acupuncture/CMakeFiles/_catkin_empty_exported_target.dir/all
 ur_modern_driver/CMakeFiles/ur_driver.dir/all: industrial_core/industrial_msgs/CMakeFiles/industrial_msgs_generate_messages_py.dir/all
 ur_modern_driver/CMakeFiles/ur_driver.dir/all: industrial_core/industrial_msgs/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 ur_modern_driver/CMakeFiles/ur_driver.dir/all: industrial_core/industrial_msgs/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all

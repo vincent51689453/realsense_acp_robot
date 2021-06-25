@@ -5,6 +5,7 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
+subdirs("acupuncture")
 subdirs("industrial_core/industrial_core")
 subdirs("industrial_core/industrial_deprecated")
 subdirs("realsense_handler_3d")

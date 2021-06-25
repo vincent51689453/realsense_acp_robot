@@ -105,8 +105,8 @@ def main():
     print("PRess <X> or <x> to capture image for training")
 
     # Enable this line if you want to recall the image only
-    #color_output = segmentation.single_image_training(hc.color_image)
-    
+    color_output = segmentation.single_image_training(hc.color_image)
+    """
     # 2D/3D Image processing
     while not(hc.system_release):
         if((hc.depth_image is not None)and(hc.color_image is not None)):
@@ -124,7 +124,7 @@ def main():
             # cv2.imshow("Realsense [Depth]",depth_output)
             # if cv2.waitKey(1) & 0xFF == ord('q'):
             #    break
-   
+    """
     # Release GPU memory
     torch.cuda.empty_cache()
     print("GPU Memroy is released")

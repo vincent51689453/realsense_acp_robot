@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 @Author : Chan Tai Wing
-@Date   : 01 Jun 2021
+@Date   : 12 May 2021
 @About  : Publish/Subscribe of realsense images
 """
 #System Packages
@@ -11,36 +11,20 @@ import cv2
 import numpy as np
 import pyrealsense2 as rs2
 import time
-import torch
-from pynput import keyboard
 
 #ROS Packages
 import rospy
+import tf
 from sensor_msgs.msg import Image
 from sensor_msgs.msg import CameraInfo
 from std_msgs.msg import Float32MultiArray
 from cv_bridge import CvBridge, CvBridgeError
+from visualization_msgs.msg import Marker
 
 #Customize packages
 import handler_config as hc
-import segmentation 
+import detector
 
-
-# System Relase based on keyboard input
-def on_press (key):
-    try:
-        if((key.char=='q')or(key.char=='Q')):
-            hc.system_release = True
-   
-    except AttributeError:
-        #print('special key {0} pressed'.format(key))
-        p = 0
-
-def on_release(key):
-    #print('{0} released'.format(key))
-    if key == keyboard.Key.esc:
-        # Stop listener
-        return False
 
 def depth_callback(ros_msg):
     # Depth image callback
@@ -82,32 +66,24 @@ def camera_info_callback(cameraInfo):
 
 
 def main():
-    global training
 
     # Image Publisher for color and depth images
-    image_pub_color = rospy.Publisher(hc.output_rgb_image_topic,Image,queue_size=10)
+    image_pub_color = rospy.Publisher(hc.output_acp_image_topic,Image,queue_size=10)
     image_pub_depth = rospy.Publisher(hc.output_depth_image_topic ,Image,queue_size=10)
     bridge = CvBridge()
 
     # Subscribe color and depth image
-    rospy.Subscriber(hc.depth_image_topic,Image,callback=depth_callback)
+    rospy.Subscriber(hc.output_rgb_image_topic,Image,callback=depth_callback)
     rospy.Subscriber(hc.color_image_topic,Image,callback=color_callback)
 
     # Subscribe camera info [depth_rgb aligned]
     rospy.Subscriber(hc.camera_info_depth_aligned_color_topic,CameraInfo,callback=camera_info_callback)
 
-    # Keyboard Listener
-    listener = keyboard.Listener(on_press=on_press,on_release=on_release)
-    listener.start()
-    print("Press <Q> or <q> to end the AI")
-    
     # 2D/3D Image processing
-    while not(hc.system_release):
+    while True:
         if((hc.depth_image is not None)and(hc.color_image is not None)):
-            
-            # Unsupervised Segmentation (RGB):
-            color_output = segmentation.inferencing(hc.color_image)
-           
+            # Processing Core
+            color_output = detector.superpixel_refinement(hc.color_image)
             # Visulaiztion in RVIZ
             image_pub_color.publish(bridge.cv2_to_imgmsg(color_output, "bgr8"))
             #image_pub_depth.publish(bridge.cv2_to_imgmsg(depth_output, "bgr8"))
@@ -116,12 +92,15 @@ def main():
             # cv2.imshow("Realsense [Depth]",depth_output)
             # if cv2.waitKey(1) & 0xFF == ord('q'):
             #    break
-   
-    # Release GPU memory
-    torch.cuda.empty_cache()
-    print("GPU Memroy is released")
+                
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
 
 
 if __name__ == '__main__':
+    # Delay for tf capture
+    time.sleep(5)
+    print("Start")
     rospy.init_node(hc.node_name)
     main()
+    hc.marker_transform_ok = False

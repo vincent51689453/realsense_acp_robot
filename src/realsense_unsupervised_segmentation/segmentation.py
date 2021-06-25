@@ -43,8 +43,11 @@ def inferencing(rgb_image):
         segmentation_cnn = torch.load(hc.model_save_path)
         if torch.cuda.is_available():
             segmentation_cnn = segmentation_cnn.cuda()
+        print("Model is up! Start inferencing...")
         network_load_done = True
     else:
+        # CNN Inferencing
+
         # np array to tensor
         transformer = transforms.ToTensor()
         # # Expand dimensions 
@@ -65,6 +68,28 @@ def inferencing(rgb_image):
         im_target_rgb = np.array([label_colours[ c % 100 ] for c in im_target])
         im_target_rgb = im_target_rgb.reshape(rgb_image.shape).astype(np.uint8)
 
+        # Super pixel refinement
+        """
+        # Segmentation by SLIC
+        labels = segmentation.slic(rgb_image,compactness=hc.compactness, n_segments=hc.segments)
+        labels = lables.reshape(rgb_image.shapep[0]*rgb_image.shape[1])
+
+        # Find unqiue lables
+        u_labels = np.unique(labels)
+        l_inds = []
+        for i in range(len(u_labels)):
+            l_inds.append(np.where(labels==u_labels[i])[0])
+        
+        # Refinement
+        for i in range(len(l_inds)):
+            labels_per_sp = im_target[ l_inds[ i ] ]
+            u_labels_per_sp = np.unique( labels_per_sp )
+            hist = np.zeros( len(u_labels_per_sp) )
+            for j in range(len(hist)):
+                hist[ j ] = len( np.where( labels_per_sp == u_labels_per_sp[ j ] )[ 0 ] )
+            im_target[ l_inds[ i ] ] = u_labels_per_sp[ np.argmax( hist ) ]
+        """
+
     return im_target_rgb
 
 # Pick a picture and start training
@@ -72,13 +97,13 @@ def single_image_training(rgb_image):
     im_target_rgb = rgb_image
     image_ready = False
     # Make sure image is captured (not applicable for image recall)
-    while not(image_ready):
-        image_ready,file_name = freeze_image(rgb_image)
+    #while not(image_ready):
+    #    image_ready,file_name = freeze_image(rgb_image)
 
     # Start training 
      
     # Enable this line if you want to recall the image only   
-    #file_name = '/home/vincent/vincent-dev/realsense_acp_robot/src/realsense_unsupervised_segmentation/sample/img_0.jpg'
+    file_name = '/home/vincent/vincent-dev/realsense_acp_robot/src/realsense_unsupervised_segmentation/sample/img_1.jpg'
     
     img = cv2.imread(file_name)
     if(img is not None):
@@ -136,7 +161,7 @@ def single_image_training(rgb_image):
             print (batch_idx, '/', hc.max_epoch, ':', nLabels, loss.item())
 
             if (nLabels <= hc.min_num_labels):
-                training_msg = "nLabels", nLabels, "reached minLabels", min_num_labels, "."
+                training_msg = "nLabels", nLabels, "reached minLabels", hc.min_num_labels, "."
                 print(training_msg)
                 break
         
