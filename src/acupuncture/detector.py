@@ -38,13 +38,11 @@ def superpixel_refinement(rgb_img):
         print("color #{}: {}".format(i,[color_list[i]]))
     print("\r\n")
 
-
-    # Consider color in color bank one by one
+    # Consider color in color bank one by one, find max contour
     for j in range(0,num_color):
         mask = color_masking(rgb_img,color_list[j])
         max_contour = get_max_contour(mask)
         object_list.append(max_contour)
-
 
     # Find forearm in different 'max' contours
     for k in range(0,len(object_list)):
