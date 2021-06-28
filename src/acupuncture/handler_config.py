@@ -28,4 +28,5 @@ anchor_x = 1000
 anchor_y = 600
 anchor_color = (255,255,255)
 anchor_size = 3
+index = 0
 

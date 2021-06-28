@@ -20,6 +20,29 @@ import network
 network_load_done = False
 segmentation_cnn = None
 
+# BGR
+color_bank = np.array([[0,0,255],
+    [0,128,255],
+    [0,255,255],
+    [0,255,128],
+    [0,255,0],
+    [102,204,0],
+    [255,255,0],
+    [255,128,0],
+    [255,0,0],
+    [255,0,127],
+    [128,128,128],
+    [204,204,255],
+    [204,255,255],
+    [255,204,229],
+    [51,0,102],
+    [153,76,0],
+    [0,102,51],
+    [0,51,102],
+    [0,153,0],
+    [102,102,0]
+])
+
 # Get a static image and saved
 def freeze_image(rgb_image):
     # When capture button is pressed
@@ -65,8 +88,9 @@ def inferencing(rgb_image):
         im_target = target.data.cpu().numpy()
         nLabels = len(np.unique(im_target))
         # Random colors for 100 classes
-        label_colours = np.random.randint(255,size=(100,3))
-        im_target_rgb = np.array([label_colours[ c % 100 ] for c in im_target])
+        #label_colours = np.random.randint(255,size=(10,3))
+        label_colours = color_bank
+        im_target_rgb = np.array([label_colours[ c % 16 ] for c in im_target])
         im_target_rgb = im_target_rgb.reshape(rgb_image.shape).astype(np.uint8)
 
         # Super pixel refinement
