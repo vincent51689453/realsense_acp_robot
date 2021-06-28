@@ -24,9 +24,7 @@ camera_config = None
 intrinsic = None
 
 # Detector
-anchor_x = 1000
-anchor_y = 600
-anchor_color = (255,255,255)
-anchor_size = 3
+forearm_area_min = 80000
+forearm_area_max = 95000
 index = 0
 

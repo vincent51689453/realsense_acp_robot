@@ -89,12 +89,13 @@ def main():
             #image_pub_depth.publish(bridge.cv2_to_imgmsg(depth_output, "bgr8"))
             # Visualization in new window
             # cv2.imshow("Realsense [RGB]",color_output)
+            # cv2.setMouseCallback("Realsense [RGB]",color_info)
             # cv2.imshow("Realsense [Depth]",depth_output)
             # if cv2.waitKey(1) & 0xFF == ord('q'):
-            #    break
+            #     break
                 
-    #cv2.waitKey(0)
-    #cv2.destroyAllWindows()
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 
 if __name__ == '__main__':
