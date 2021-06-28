@@ -27,4 +27,6 @@ intrinsic = None
 forearm_area_min = 80000
 forearm_area_max = 95000
 index = 0
+target_found = False
+target_x,target_y,target_h,target_w = 0,0,0,0
 

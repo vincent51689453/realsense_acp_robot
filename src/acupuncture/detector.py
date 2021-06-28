@@ -53,6 +53,11 @@ def superpixel_refinement(rgb_img):
             if((area>=hc.forearm_area_min)and(area<=hc.forearm_area_max)):
                 cv2.drawContours(rgb_img, object_list[k], -1, (0,255,0),3)
                 cv2.rectangle(rgb_img,(x,y),(x+w,y+h),(0,0,255),3)
+                hc.target_x,hc.target_y,hc.target_h,hc.target_w = x,y,h,w
+                hc.target_found = True
+    
+    # Acupuncuture Map Generation
+    rgb_img = rgb_img[hc.target_y:hc.target_y+hc.target_h, hc.target_x:hc.target_x+hc.target_w]
 
     return rgb_img
 
