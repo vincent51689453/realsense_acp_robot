@@ -57,6 +57,7 @@ def superpixel_refinement(rgb_img):
                 hc.target_found = True
     
     # Acupuncuture Map Generation
+    # Zoom to workspace
     rgb_img = rgb_img[hc.target_y:hc.target_y+hc.target_h, hc.target_x:hc.target_x+hc.target_w]
 
     return rgb_img
